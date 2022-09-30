@@ -10,18 +10,25 @@ self.addEventListener('fetch', event => {
     //event.respondWith(fotoReq);
     //}
 
-    if (event.request.url.includes('style.css')) {
-        let respuesta = new Response(`
-        body{
-            background-color: red !important;
-            color: pink;
-        }
-        `, {
-            headers: {
-                'Content-Type': 'text/css'
-            }
-        });
+    // if (event.request.url.includes('style.css')) {
+    //     let respuesta = new Response(`
+    //     body{
+    //         background-color: red !important;
+    //         color: pink;
+    //     }
+    //     `, {
+    //         headers: {
+    //             'Content-Type': 'text/css'
+    //         }
+    //     });
 
-        event.respondWith(respuesta);
+    //     event.respondWith(respuesta);
+    // }
+
+    if (event.request.url.includes('main.jpg')) {
+
+        let resp = fetch('img/main-patas-arriba.jpg');
+        event.respondWith(resp);
     }
+
 });
