@@ -25,10 +25,17 @@ self.addEventListener('fetch', event => {
     //     event.respondWith(respuesta);
     // }
 
-    if (event.request.url.includes('main.jpg')) {
+    // if (event.request.url.includes('main.jpg')) {
 
-        let resp = fetch('img/main-patas-arriba.jpg');
-        event.respondWith(resp);
-    }
+    //     let resp = fetch('img/main-patas-arriba.jpg');
+    //     event.respondWith(resp);
+    // }
 
+
+    const resp = fetch(event.request)
+        .then(resp => {
+
+            return resp.ok ? resp : fetch('img/main.jpg');
+        });
+    event.respondWith(resp);
 });
